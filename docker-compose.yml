@@ -2,8 +2,6 @@ version: '3.7'
 
 volumes:
   multi_vote_bot:
-    external: true
-
 services:
   bot:
     image: ratijas/multi_vote_bot
@@ -12,6 +10,7 @@ services:
 
     volumes:
       - "multi_vote_bot:/root/.local/share/multi_vote_bot"
+      - .:/usr/src/app
 
     environment:
       - LISTEN=0.0.0.0
