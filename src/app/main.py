@@ -105,7 +105,7 @@ def send_vote_poll(message: Message, poll: Poll):
 
     message.reply_text(
         str(poll),
-        parse_mode=None,
+        parse_mode='MarkdownV2',
         disable_web_page_preview=True,
         reply_markup=markup
     )
@@ -116,7 +116,7 @@ def send_admin_poll(message: Message, poll: Poll):
 
     message.reply_text(
         str(poll),
-        parse_mode=None,
+        parse_mode='MarkdownV2',
         disable_web_page_preview=True,
         reply_markup=markup)
 
@@ -294,7 +294,7 @@ def inline_query(update: Update, context: CallbackContext):
                 title=poll.topic,
                 input_message_content=InputTextMessageContent(
                     message_text=str(poll),
-                    parse_mode=None,
+                    parse_mode='MarkdownV2',
                     disable_web_page_preview=True),
                 description=" / ".join(answer.text for answer in poll.answers()),
                 reply_markup=inline_keyboard_markup_answers(poll)))
@@ -365,7 +365,7 @@ def callback_query_vote(update: Update, context: CallbackContext):
         with ignore_not_modified():
             query.edit_message_text(
                 text=str(poll),
-                parse_mode=None,
+                parse_mode='MarkdownV2',
                 disable_web_page_preview=True,
                 reply_markup=markup)
 
@@ -392,7 +392,7 @@ def callback_query_update(update: Update, context: CallbackContext):
     with ignore_not_modified():
         query.edit_message_text(
             text=str(poll),
-            parse_mode=None,
+            parse_mode='MarkdownV2',
             disable_web_page_preview=True,
             reply_markup=inline_keyboard_markup_admin(poll))
 

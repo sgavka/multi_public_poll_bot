@@ -97,7 +97,12 @@ class Answer(object):
                 max(1, int(relative_percentage * 8)),
                 int(percentage * 100))
 
-        return "{} - {}\n{}".format(self.text, count, bar)
+        voters = ''
+        if len(self.voters()):
+            voters = '\n'
+            voters += ', '.join(['[{}](tg://user?id={})'.format(voter.full_name, voter.id) for voter in self.voters()])
+
+        return "{} \- {}\n{}{}".format(self.text, count, bar, voters)
 
     @classmethod
     def load(cls, poll: 'Poll', answer_id: int) -> Optional['Answer']:

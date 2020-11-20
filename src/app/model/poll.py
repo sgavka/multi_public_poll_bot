@@ -81,10 +81,10 @@ class Poll(object):
         total = self.total_voters()
 
         if total == 0:
-            footer += "Nobody voted so far."
+            footer += "Nobody voted so far\."
 
         else:
-            footer += "{} people voted so far.".format(total)
+            footer += "{} people voted so far\.".format(total)
 
         return "{}\n\n{}\n\n{}".format(self.topic,
                                        "\n\n".join(map(str, self.answers())),
